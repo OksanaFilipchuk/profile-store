@@ -3,7 +3,9 @@ import { Profile } from '../../models';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FormService } from '../../services/form.service';
 import { ProfilesDataService } from '../../services/profiles-data.service';
-import { Subject, combineLatest, fromEvent, startWith, takeUntil } from 'rxjs';
+import { Subject, combineLatest, startWith, takeUntil } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-profiles-table',
@@ -20,7 +22,8 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
 
   constructor(
     public formService: FormService,
-    private profilesDataService: ProfilesDataService
+    private profilesDataService: ProfilesDataService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -45,9 +48,23 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
       });
   }
 
-  editProfile(profile: Profile) {
+  editProfile(profile: Profile): void {
     this.profileToEdit = profile;
     this.editProfileForm.patchValue(profile);
+  }
+
+  deleteProfile(profile: Profile): void {
+    this.dialog
+      .open(ConfirmDialogComponent)
+      .afterClosed()
+      .subscribe((data) => {
+        if (data) {
+          const store = this.profilesDataService.profilesStore.filter(
+            (el) => el.id !== profile.id
+          );
+          this.profilesDataService.profilesStore$.next(store);
+        }
+      });
   }
 
   ngOnDestroy(): void {

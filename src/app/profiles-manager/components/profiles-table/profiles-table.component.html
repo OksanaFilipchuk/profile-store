@@ -28,6 +28,9 @@
               <button (click)="editProfile(profile)">
                 <mat-icon inline>edit</mat-icon>
               </button>
+              <button (click)="deleteProfile(profile)">
+                <mat-icon inline>delete</mat-icon>
+              </button>
             </td>
           </ng-container>
           <ng-container *ngIf="profileToEdit?.id === profile.id">
