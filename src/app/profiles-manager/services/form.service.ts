@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   providedIn: 'root',
 })
 export class FormService {
+  cities = ['Kyiv', 'Lviv', 'Dnipro', 'Odesa', 'Kharkiv', 'Zaporizhzhia'];
   constructor(private fb: FormBuilder) {}
 
   createProfileForm(): FormGroup {

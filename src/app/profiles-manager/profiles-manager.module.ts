@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { ProfilesTableComponent } from './components/profiles-table/profiles-table.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { IMaskModule } from 'angular-imask';
 
 @NgModule({
-  declarations: [ProfileFormComponent],
+  declarations: [ProfilesTableComponent, ProfileFormComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -22,6 +23,6 @@ import { IMaskModule } from 'angular-imask';
     IMaskModule,
     MatButtonModule,
   ],
-  exports: [ProfileFormComponent],
+  exports: [ProfilesTableComponent, ProfileFormComponent, MatIconModule],
 })
 export class ProfilesManagerModule {}

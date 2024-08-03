@@ -1,0 +1,71 @@
+<div class="container">
+  <input [formControl]="searchInput" class="search" placeholder="search" />
+
+  <form [formGroup]="editProfileForm">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>City</th>
+          <th colspan="2">Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profile of profilesFiltered">
+          <ng-container *ngIf="profileToEdit?.id !== profile.id">
+            <td>{{ profile.id }}</td>
+            <td>{{ profile.firstName }}</td>
+            <td>{{ profile.lastName }}</td>
+            <td>{{ profile.phone }}</td>
+            <td>{{ profile.mail }}</td>
+            <td>{{ profile.city }}</td>
+            <td>{{ profile.address }}</td>
+            <td>
+              <button (click)="editProfile(profile)">
+                <mat-icon inline>edit</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container *ngIf="profileToEdit?.id === profile.id">
+            <td>{{ profile.id }}</td>
+            <td><input formControlName="firstName" /></td>
+            <td><input formControlName="lastName" /></td>
+            <td>
+              <input
+                formControlName="phone"
+                [imask]="{ mask: '+00 (000) 000-00-00' }"
+              />
+            </td>
+            <td><input formControlName="mail" /></td>
+            <td>
+              <select formControlName="city">
+                <option *ngFor="let city of formService.cities" [value]="city">
+                  {{ city }}
+                </option>
+              </select>
+            </td>
+            <td><input formControlName="address" /></td>
+            <td>
+              <button (click)="profileToEdit = null">
+                <mat-icon inline>close</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+        </tr>
+      </tbody>
+
+      <ng-container *ngIf="!profilesFiltered.length">
+        <tr>
+          <td *ngIf="searchInput.value" colspan="8">
+            No data matching the filter "{{ searchInput.value }}"
+          </td>
+          <td *ngIf="!searchInput.value" colspan="8">No data</td>
+        </tr>
+      </ng-container>
+    </table>
+  </form>
+</div>

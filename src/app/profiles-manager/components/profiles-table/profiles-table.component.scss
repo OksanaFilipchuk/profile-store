@@ -1,0 +1,44 @@
+.search {
+  margin: 20px 0;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+form {
+  overflow-x: scroll;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 50px;
+}
+
+th,
+td {
+  padding: 0 15px;
+  text-align: left;
+  border: none;
+  text-overflow: ellipsis;
+}
+
+tr {
+  height: 30px;
+  border-bottom: 1px solid #808080;
+}
+
+td {
+  input {
+    width: 90%;
+    text-overflow: ellipsis;
+    border: none;
+    outline: none;
+  }
+
+  select {
+    outline: none;
+  }
+}
