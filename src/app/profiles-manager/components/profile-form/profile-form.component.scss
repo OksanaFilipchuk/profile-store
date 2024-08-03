@@ -1,0 +1,24 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 20px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
+}
+
+button {
+  width: 85px;
+  margin-left: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+
+  @media (min-width: 640px) {
+    width: 49%;
+  }
+}
