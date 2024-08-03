@@ -38,7 +38,9 @@
   <mat-form-field>
     <mat-label>City</mat-label>
     <select matNativeControl formControlName="city">
-      <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+      <option *ngFor="let city of formService.cities" [value]="city">
+        {{ city }}
+      </option>
     </select>
   </mat-form-field>
 
@@ -47,12 +49,11 @@
     <input matInput formControlName="address" />
     <mat-error> The field must contain between 3 and 20 characters. </mat-error>
   </mat-form-field>
-
-  <button
-    mat-raised-button
-    [disabled]="profileForm.invalid"
-    (click)="onFormSubmit()"
-  >
-    Save
-  </button>
 </form>
+<button
+  mat-raised-button
+  [disabled]="profileForm.invalid"
+  (click)="onFormSubmit()"
+>
+  Save
+</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../../services/form.service';
 import { FormGroup } from '@angular/forms';
+import { ProfilesDataService } from '../../services/profiles-data.service';
 
 @Component({
   selector: 'app-profile-form',
@@ -9,14 +10,27 @@ import { FormGroup } from '@angular/forms';
 })
 export class ProfileFormComponent implements OnInit {
   profileForm: FormGroup;
-  cities = ['Kyiv', 'Lviv', 'Dnipro', 'Odesa', 'Kharkiv', 'Zaporizhzhia'];
-  constructor(private formService: FormService) {}
+  constructor(
+    public formService: FormService,
+    private profilesDataService: ProfilesDataService
+  ) {}
 
   ngOnInit(): void {
     this.profileForm = this.formService.createProfileForm();
   }
 
   onFormSubmit() {
-    console.log(this.profileForm.value);
+    const id = this.profilesDataService.profilesStore.length
+      ? Math.max(
+          ...this.profilesDataService.profilesStore.map((user) => user.id)
+        ) + 1
+      : 1;
+    this.profilesDataService.profilesStore.push({
+      ...this.profileForm.value,
+      ...{ id },
+    });
+    this.profilesDataService.profilesStore$.next(
+      this.profilesDataService.profilesStore
+    );
   }
 }
