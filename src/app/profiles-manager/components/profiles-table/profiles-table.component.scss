@@ -31,6 +31,18 @@ tr {
 }
 
 td {
+  &.action-buttons {
+    text-wrap: nowrap;
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: unset;
+  }
+
   input {
     width: 90%;
     text-overflow: ellipsis;

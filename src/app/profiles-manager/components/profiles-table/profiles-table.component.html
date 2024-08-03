@@ -24,7 +24,7 @@
             <td>{{ profile.mail }}</td>
             <td>{{ profile.city }}</td>
             <td>{{ profile.address }}</td>
-            <td>
+            <td class="action-buttons">
               <button (click)="editProfile(profile)">
                 <mat-icon inline>edit</mat-icon>
               </button>
@@ -52,9 +52,15 @@
               </select>
             </td>
             <td><input formControlName="address" /></td>
-            <td>
+            <td class="action-buttons">
               <button (click)="profileToEdit = null">
                 <mat-icon inline>close</mat-icon>
+              </button>
+              <button
+                (click)="saveChanges()"
+                [disabled]="!editProfileForm.valid"
+              >
+                <mat-icon inline>done</mat-icon>
               </button>
             </td>
           </ng-container>

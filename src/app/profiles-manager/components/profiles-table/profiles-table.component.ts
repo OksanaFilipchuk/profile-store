@@ -67,6 +67,20 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
       });
   }
 
+  saveChanges(): void {
+    const profile = this.profilesDataService.profilesStore.find(
+      (el) => el.id === this.profileToEdit?.id
+    );
+    if (profile) {
+      Object.assign(profile, this.editProfileForm.value);
+    }
+    this.profilesDataService.profilesStore$.next(
+      this.profilesDataService.profilesStore
+    );
+    this.profileToEdit = null;
+    this.editProfileForm.reset();
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next(null);
     this.destroy$.complete();
