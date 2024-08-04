@@ -1,5 +1,7 @@
 # ProfileStore
 
+[Profile store deploy](https://chic-unicorn-d9e399.netlify.app/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
 
 ## Development server
