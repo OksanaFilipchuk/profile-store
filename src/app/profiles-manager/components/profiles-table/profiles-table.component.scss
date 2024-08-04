@@ -19,7 +19,7 @@ table {
 
 th,
 td {
-  padding: 0 15px;
+  padding: 0 10px;
   text-align: left;
   border: none;
   text-overflow: ellipsis;
@@ -48,9 +48,14 @@ td {
     text-overflow: ellipsis;
     border: none;
     outline: none;
+    background-color: transparent;
   }
 
   select {
     outline: none;
   }
+}
+
+.editing {
+  background-color: #e9e5b0;
 }

@@ -55,7 +55,11 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
 
   deleteProfile(profile: Profile): void {
     this.dialog
-      .open(ConfirmDialogComponent)
+      .open(ConfirmDialogComponent, {
+        data: {
+          title: 'Would you like to delete profile? ',
+        },
+      })
       .afterClosed()
       .subscribe((data) => {
         if (data) {

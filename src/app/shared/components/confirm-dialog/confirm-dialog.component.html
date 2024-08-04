@@ -1,7 +1,13 @@
-<mat-dialog-content> Would you like to delete profile? </mat-dialog-content>
+<h2 mat-dialog-title>{{ data.title }}</h2>
+<ng-container *ngIf="data.content">
+  <mat-dialog-content *ngFor="let line of data.content">
+    {{ line }}
+  </mat-dialog-content>
+</ng-container>
+
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="close(false)">No</button>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="close(true)">
-    Ok
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="close(false)">
+    No
   </button>
+  <button mat-button mat-dialog-close (click)="close(true)">Ok</button>
 </mat-dialog-actions>
