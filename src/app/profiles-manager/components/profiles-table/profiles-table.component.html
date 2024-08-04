@@ -15,21 +15,30 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let profile of profilesFiltered">
+        <tr
+          *ngFor="let profile of profilesFiltered"
+          [class.editing]="profileToEdit?.id === profile.id"
+        >
           <ng-container *ngIf="profileToEdit?.id !== profile.id">
             <td>{{ profile.id }}</td>
             <td>{{ profile.firstName }}</td>
             <td>{{ profile.lastName }}</td>
-            <td>{{ profile.phone }}</td>
+            <td>
+              <input
+                [imask]="{ mask: '+000 (00) 000-00-00' }"
+                [readOnly]="true"
+                [value]="profile.phone"
+              />
+            </td>
             <td>{{ profile.mail }}</td>
             <td>{{ profile.city }}</td>
             <td>{{ profile.address }}</td>
             <td class="action-buttons">
               <button (click)="editProfile(profile)">
-                <mat-icon inline>edit</mat-icon>
+                <mat-icon inline color="primary">edit</mat-icon>
               </button>
               <button (click)="deleteProfile(profile)">
-                <mat-icon inline>delete</mat-icon>
+                <mat-icon inline color="primary">delete</mat-icon>
               </button>
             </td>
           </ng-container>
@@ -40,7 +49,7 @@
             <td>
               <input
                 formControlName="phone"
-                [imask]="{ mask: '+00 (000) 000-00-00' }"
+                [imask]="{ mask: '+000 (00) 000-00-00' }"
               />
             </td>
             <td><input formControlName="mail" /></td>
