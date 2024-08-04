@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -15,22 +20,28 @@ export class FormService {
         '',
         [
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(2),
           Validators.maxLength(20),
+          this.noWhitespaceValidator,
         ],
       ],
       lastName: [
         '',
         [
           Validators.required,
-          Validators.minLength(3),
+          Validators.minLength(2),
           Validators.maxLength(20),
+          this.noWhitespaceValidator,
         ],
       ],
       phone: ['', [Validators.required, Validators.pattern('^[- +()0-9]+$')]],
       mail: ['', [Validators.required, Validators.email]],
       city: ['', Validators.required],
-      address: ['', Validators.required],
+      address: ['', [Validators.required, this.noWhitespaceValidator]],
     });
+  }
+
+  public noWhitespaceValidator(control: FormControl) {
+    return (control.value || '').trim().length ? null : { whitespace: true };
   }
 }
