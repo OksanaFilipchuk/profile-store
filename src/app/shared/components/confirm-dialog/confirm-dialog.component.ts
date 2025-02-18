@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from 'src/app/profiles-manager/models';
+import { DialogData } from '../../../profiles-manager/models';
 
 @Component({
   selector: 'app-confirm-dialog',

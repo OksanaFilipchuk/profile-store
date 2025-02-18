@@ -5,7 +5,7 @@ import { FormService } from '../../services/form.service';
 import { ProfilesDataService } from '../../services/profiles-data.service';
 import { Subject, combineLatest, startWith, takeUntil } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-profiles-table',

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfilesTableComponent } from './profiles-table.component';
 import { MatDialog } from '@angular/material/dialog';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 describe('ProfilesTableComponent', () => {
   let component: ProfilesTableComponent;
